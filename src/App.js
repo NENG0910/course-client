@@ -12,6 +12,7 @@ import EnrollCourseComponent from "./component/EnrollCourse-component";
 
 function App() {
   let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
+  let [courseData, setCourseData] = useState(null);
 
   console.log(currentUser);
   return (
@@ -46,6 +47,8 @@ function App() {
             <CourseComponent
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
+              courseData={courseData}
+              setCourseData={setCourseData}
             />
           }
           exact

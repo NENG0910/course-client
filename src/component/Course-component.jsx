@@ -4,11 +4,11 @@ import CourseService from "../services/course.service";
 
 const CourseComponent = (props) => {
   const navigate = useNavigate();
-  let { currentUser } = props;
+  let { currentUser, courseData, setCourseData } = props;
   const handleTakeToLogin = () => {
     navigate("/login");
   };
-  let [courseData, setCourseData] = useState(null);
+
   useEffect(() => {
     //設定網址的id /instructor/instructor的id
     let _id;
