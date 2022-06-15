@@ -8,7 +8,7 @@ const ProfileComponent = (props) => {
     navigate("/login");
   };
   return (
-    <div>
+    <div style={{ padding: "2rem" }}>
       {!currentUser && (
         <div>
           <p>You must login to visit profile page.</p>
@@ -19,15 +19,28 @@ const ProfileComponent = (props) => {
       )}
       {currentUser && (
         <div>
-          <h1>In profile</h1>
-          <header className="jumbotron">
+          <div className="d-flex align-items-center">
+            <img
+              className="rounded-circle"
+              style={{ width: "50px", height: "50px" }}
+              src="https://picsum.photos/seed/picsum/200/300"
+              alt="Profile Photo"
+            />
+
+            <div style={{ padding: "1rem " }} className=" align-items-center">
+              <p>
+                <strong>User Name : {currentUser.user.username}</strong>
+              </p>
+
+              <p>Email : {currentUser.user.email}</p>
+            </div>
+          </div>
+
+          <div>
             <h3>
-              <strong>{currentUser.user.username}</strong>
+              <strong>{currentUser.user.username}，開始學習吧</strong>
             </h3>
-          </header>
-          <p>
-            <strong>{currentUser.user.email}</strong>
-          </p>
+          </div>
         </div>
       )}
     </div>

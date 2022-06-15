@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 const LoginComponent = (props) => {
-  let { currentUser, setCurrentUser } = props;
+  let { setCurrentUser } = props;
   const navigate = useNavigate();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
@@ -17,7 +17,6 @@ const LoginComponent = (props) => {
   const handleLogin = () => {
     AuthService.login(email, password)
       .then((response) => {
-        console.log(response.data);
         if (response.data.token) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }
@@ -25,7 +24,7 @@ const LoginComponent = (props) => {
           "Login successfully, you are now redirected to the profile page."
         );
         setCurrentUser(AuthService.getCurrentUser());
-        console.log(currentUser);
+
         navigate("/profile");
       })
       .catch((err) => {
