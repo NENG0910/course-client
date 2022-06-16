@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
+import CourseService from "../services/course.service";
 
 const NavComponent = (props) => {
-  let { currentUser, setCurrentUser } = props;
+  let { currentUser, setCurrentUser, searchResult, setSearchResult } = props;
   const navigate = useNavigate();
   const handleLogout = () => {
     AuthService.logout();
     window.alert("Logout successfully.");
     setCurrentUser(null);
     navigate("/");
+  };
+  let [searchInput, setSearchInput] = useState("");
+
+  const handleSearchInput = (e) => {
+    setSearchInput(e.target.value);
+  };
+  const handleSearch = () => {
+    CourseService.getCourseByName(searchInput)
+      .then((data) => {
+        setSearchResult(data.data);
+        console.log(data.data);
+        navigate("/enroll");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div>
@@ -93,8 +110,13 @@ const NavComponent = (props) => {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={handleSearchInput}
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button
+                className="btn btn-outline-success"
+                type="submit"
+                onClick={handleSearch}
+              >
                 Search
               </button>
             </form>

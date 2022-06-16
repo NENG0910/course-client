@@ -3,28 +3,16 @@ import { useNavigate } from "react-router-dom";
 import CourseService from "../services/course.service";
 
 const EnrollCourseComponent = (props) => {
-  let { currentUser, setCurrentUser } = props;
+  let { currentUser, setCurrentUser, searchResult } = props;
   const navigate = useNavigate();
-  let [searchInput, setSearchInput] = useState("");
-  let [searchResult, setSearchResult] = useState(null);
-  const handleTakeToLogin = () => {
-    navigate("/login");
-  };
-  const handleSearchInput = (e) => {
-    setSearchInput(e.target.value);
-  };
-  const handleSearch = () => {
-    CourseService.getCourseByName(searchInput)
-      .then((data) => {
-        setSearchResult(data.data);
-        console.log(data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
   const handleEnroll = (e) => {
     console.log(e.target.id);
+    if (!currentUser) {
+      window.alert("You must login brfore to enroll your course.");
+      navigate("/login");
+    }
+
     CourseService.enroll(e.target.id, currentUser.user._id)
       .then(() => {
         window.alert("Done Enroll.");
@@ -37,32 +25,8 @@ const EnrollCourseComponent = (props) => {
 
   return (
     <div style={{ padding: "3rem" }}>
-      <div className="d-flex" role="search">
-        <input
-          onChange={handleSearchInput}
-          className="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button
-          onClick={handleSearch}
-          className="btn btn-outline-success"
-          type="submit"
-        >
-          Search
-        </button>
-      </div>
       <div style={{ padding: "3rem" }}>
-        {!currentUser && (
-          <div style={{ padding: "3rem" }}>
-            <p>You must login brfore to see your course</p>
-            <button onClick={handleTakeToLogin} className="btn btn-primary">
-              Login
-            </button>
-          </div>
-        )}
-        {currentUser && searchResult && searchResult.length !== 0 && (
+        {searchResult && searchResult.length !== 0 && (
           <div>
             <p>Here's the data from sever</p>
             {searchResult.map((course) => (
