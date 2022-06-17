@@ -74,9 +74,21 @@ const ProfileComponent = (props) => {
           </div>
 
           <div>
-            <h3>
-              <strong>{currentUser.user.username}，開始學習吧</strong>
-            </h3>
+            {currentUser.user.role == "instructor" && (
+              <div>
+                <h3>
+                  <strong>{currentUser.user.username}，管理您的課程</strong>
+                </h3>
+              </div>
+            )}
+            {currentUser.user.role === "student" && (
+              <div>
+                <h3>
+                  <strong>{currentUser.user.username}，開始學習吧</strong>
+                </h3>
+              </div>
+            )}
+
             {currentUser && courseData && courseData.length !== 0 && (
               <div>
                 {courseData.map((course) => (
@@ -92,13 +104,14 @@ const ProfileComponent = (props) => {
                         <p className="card-text">
                           Student count: {course.students.length}
                         </p>
-
-                        <button
-                          onClick={handleEnterCourse}
-                          className="btn btn-primary"
-                        >
-                          進入課程
-                        </button>
+                        <div>
+                          <button
+                            onClick={handleEnterCourse}
+                            className="btn btn-primary"
+                          >
+                            進入課程
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <br />
