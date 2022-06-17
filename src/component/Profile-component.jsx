@@ -39,6 +39,10 @@ const ProfileComponent = (props) => {
         });
     }
   }, []);
+  //按下進入課程，顯示alert，此功能尚未開發，敬請期待
+  const handleEnterCourse = () => {
+    window.alert("課程專屬頁面尚未開發，敬請期待．");
+  };
   return (
     <div style={{ padding: "2rem" }}>
       {!currentUser && (
@@ -89,7 +93,12 @@ const ProfileComponent = (props) => {
                           Student count: {course.students.length}
                         </p>
 
-                        <a className="btn btn-primary">進入課程</a>
+                        <button
+                          onClick={handleEnterCourse}
+                          className="btn btn-primary"
+                        >
+                          進入課程
+                        </button>
                       </div>
                     </div>
                     <br />
