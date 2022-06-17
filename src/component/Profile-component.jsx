@@ -104,13 +104,24 @@ const ProfileComponent = (props) => {
                         <p className="card-text">
                           Student count: {course.students.length}
                         </p>
-                        <div>
+                        <div className="d-flex">
                           <button
                             onClick={handleEnterCourse}
                             className="btn btn-primary"
+                            style={{ margin: "1px" }}
                           >
                             進入課程
                           </button>
+                          {currentUser.user.role === "instructor" && (
+                            <div>
+                              <button
+                                className="btn btn-primary"
+                                style={{ margin: "1px" }}
+                              >
+                                編輯課程
+                              </button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
