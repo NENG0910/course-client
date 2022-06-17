@@ -65,6 +65,7 @@ const ProfileComponent = (props) => {
               </p>
 
               <p>Email : {currentUser.user.email}</p>
+              <p>Role: {currentUser.user.role}</p>
             </div>
           </div>
 
