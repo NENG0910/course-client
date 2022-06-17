@@ -43,6 +43,9 @@ const ProfileComponent = (props) => {
   const handleEnterCourse = () => {
     window.alert("課程專屬頁面尚未開發，敬請期待．");
   };
+  const handleEditCourse = () => {
+    navigate("/editCourse");
+  };
   return (
     <div style={{ padding: "2rem" }}>
       {!currentUser && (
@@ -112,9 +115,11 @@ const ProfileComponent = (props) => {
                           >
                             進入課程
                           </button>
+
                           {currentUser.user.role === "instructor" && (
                             <div>
                               <button
+                                onClick={handleEditCourse}
                                 className="btn btn-primary"
                                 style={{ margin: "1px" }}
                               >
