@@ -23,6 +23,7 @@ const RegisterComponent = () => {
     setRole(e.target.value);
   };
   const handleRegister = () => {
+    console.log(role);
     AuthService.register(username, email, password, role)
       .then(() => {
         window.alert("Registration successds.You are now redirected to login.");
@@ -49,6 +50,7 @@ const RegisterComponent = () => {
             type="text"
             className="form-control"
             name="username"
+            placeholder="至少3個字"
           />
         </div>
         <br />
@@ -59,6 +61,7 @@ const RegisterComponent = () => {
             type="text"
             className="form-control"
             name="email"
+            placeholder="至少6個字"
           />
         </div>
         <br />
@@ -69,17 +72,24 @@ const RegisterComponent = () => {
             type="password"
             className="form-control"
             name="password"
+            placeholder="至少6個字"
           />
         </div>
         <br />
         <div className="form-group">
-          <label htmlFor="role">Role(student or instructor)</label>
-          <input
+          <label htmlFor="role">Role</label>
+          {/* <input
             onChange={handleChangeRole}
             type="text"
             className="form-control"
             name="role"
-          />
+          /> */}
+          {/*onChange的值要放在select，不是option */}
+          <select className="form-select" onChange={handleChangeRole}>
+            <option selected>Are you instructor or student?</option>
+            <option value="instructor">Instructor</option>
+            <option value="student">Student</option>
+          </select>
         </div>
         <br />
         <button onClick={handleRegister} className="btn btn-primary">
