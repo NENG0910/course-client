@@ -87,7 +87,7 @@ const ProfileComponent = (props) => {
             )}
             {currentUser.user.role === "student" && (
               <div>
-                <h3>
+                <h3 className="text-break">
                   <strong>{currentUser.user.username}，開始學習吧</strong>
                 </h3>
               </div>

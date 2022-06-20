@@ -69,6 +69,12 @@ const HomeComponent = () => {
 
         <footer className="pt-3 mt-4 text-muted border-top">
           <p>Author's Email:k7351264@gmail.com</p>
+          <p>
+            Author's
+            <a target="_blank" href="https://github.com/NENG0910">
+              Github
+            </a>
+          </p>
         </footer>
       </div>
     </main>

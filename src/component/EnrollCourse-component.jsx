@@ -53,7 +53,7 @@ const EnrollCourseComponent = (props) => {
           Search
         </button>
       </div>
-      <div style={{ padding: "3rem" }}>
+      <div>
         {!currentUser && (
           <div style={{ padding: "3rem" }}>
             <p>You must login brfore to see your course</p>

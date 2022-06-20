@@ -74,6 +74,7 @@ function App() {
           }
           exact
         />
+        <Route path="/*" element="該頁面不存在，404 not dound" />
       </Routes>
     </div>
   );
