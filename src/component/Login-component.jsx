@@ -63,6 +63,9 @@ const LoginComponent = (props) => {
         <button onClick={handleLogin} className="btn btn-primary">
           <span>Login</span>
         </button>
+        <br />
+        <p>instructor測試帳號：654321@gmail.com 密碼：654321</p>
+        <p>student測試帳號：123456@gmail.com 密碼：123456</p>
       </div>
     </div>
   );
