@@ -44,7 +44,8 @@ const ProfileComponent = (props) => {
     window.alert("課程專屬頁面尚未開發，敬請期待．");
   };
   const handleEditCourse = () => {
-    navigate("/editCourse");
+    window.alert("編輯課程功能尚未開發");
+    // navigate("/editCourse");
   };
   return (
     <div style={{ padding: "2rem" }}>
@@ -58,7 +59,7 @@ const ProfileComponent = (props) => {
       )}
       {currentUser && (
         <div>
-          <div className="d-flex align-items-center">
+          <div className="cotainer d-flex align-items-center flex-wrap">
             <img
               className="rounded-circle"
               style={{ width: "50px", height: "50px" }}
@@ -71,15 +72,15 @@ const ProfileComponent = (props) => {
                 <strong>User Name : {currentUser.user.username}</strong>
               </p>
 
-              <p>Email : {currentUser.user.email}</p>
-              <p>Role: {currentUser.user.role}</p>
+              <p className="fw-light">Email : {currentUser.user.email}</p>
+              <p className="fw-light">Role: {currentUser.user.role}</p>
             </div>
           </div>
 
           <div>
             {currentUser.user.role == "instructor" && (
               <div>
-                <h3>
+                <h3 className="text-break">
                   <strong>{currentUser.user.username}，管理您的課程</strong>
                 </h3>
               </div>

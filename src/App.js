@@ -41,7 +41,8 @@ function App() {
           }
           exact
         />
-        <Route
+        {/* course頁面不開放 */}
+        {/* <Route
           path="/course"
           element={
             <CourseComponent
@@ -52,7 +53,7 @@ function App() {
             />
           }
           exact
-        />
+        /> */}
         <Route
           path="/postCourse"
           element={

@@ -22,7 +22,7 @@ const PostCourseComponent = (props) => {
     CouresService.postCourse(title, description, price)
       .then(() => {
         window.alert("Post a new course.");
-        navigate("/course");
+        navigate("/profile");
       })
       .catch((err) => {
         console.log(err.response.data);
