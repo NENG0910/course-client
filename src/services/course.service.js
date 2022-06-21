@@ -2,8 +2,9 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/api/courses";
 class CourseService {
-  //讓axios攜帶jwt去server
+  //POST post課程
   postCourse(title, description, price) {
+    //讓axios攜帶jwt去server
     let token;
     if (localStorage.getItem("user")) {
       token = JSON.parse(localStorage.getItem("user")).token;
@@ -37,7 +38,7 @@ class CourseService {
       },
     });
   }
-
+  //搜尋課程
   getCourseByName(name) {
     let token;
     if (localStorage.getItem("user")) {
@@ -52,6 +53,7 @@ class CourseService {
     });
   }
 
+  //GET 在Profile page顯示instructor的post course
   get(_id) {
     let token;
     if (localStorage.getItem("user")) {
@@ -83,6 +85,20 @@ class CourseService {
         },
       }
     );
+  }
+  //GET 顯示所有課程
+  getAllCourse() {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.get(API_URL + "/", {
+      headers: {
+        Authorization: token,
+      },
+    });
   }
 }
 

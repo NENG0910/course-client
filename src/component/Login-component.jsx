@@ -66,6 +66,9 @@ const LoginComponent = (props) => {
         <br />
         <p>instructor測試帳號：654321@gmail.com 密碼：654321</p>
         <p>student測試帳號：123456@gmail.com 密碼：123456</p>
+        <p>
+          第一次使用網站功能(登入註冊帳號等與後端連接功能)會延遲數秒，請稍待主機開啟
+        </p>
       </div>
     </div>
   );
