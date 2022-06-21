@@ -82,14 +82,7 @@ const NavComponent = (props) => {
                   </a>
                 </li>
               )}
-              {/*course頁面不開放 */}
-              {/* {currentUser && (
-                <li className="nav-item">
-                  <a className="nav-link" href="/course">
-                    Course
-                  </a>
-                </li>
-              )} */}
+
               {currentUser && currentUser.user.role === "instructor" && (
                 <li className="nav-item">
                   <a className="nav-link" href="/postCourse">
