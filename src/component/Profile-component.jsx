@@ -39,6 +39,7 @@ const ProfileComponent = (props) => {
         });
     }
   }, []);
+
   //按下進入課程，顯示alert，此功能尚未開發，敬請期待
   const handleEnterCourse = () => {
     window.alert("課程專屬頁面尚未開發，敬請期待．");
@@ -46,6 +47,21 @@ const ProfileComponent = (props) => {
   const handleEditCourse = () => {
     window.alert("編輯課程功能尚未開發");
     // navigate("/editCourse");
+  };
+  const handleDeleteCourse = (e) => {
+    console.log(e.target.id);
+    if (window.confirm("是否刪除？")) {
+      CourseService.deleteCourse(e.target.id)
+        .then((data) => {
+          console.log(data);
+          window.alert("該課程已刪除");
+          //因為刪除後courseDatac還保留在刪除前的狀態，所以先跳轉到首頁
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   return (
     <div style={{ padding: "2rem" }}>
@@ -124,7 +140,19 @@ const ProfileComponent = (props) => {
                                 className="btn btn-primary"
                                 style={{ margin: "1px" }}
                               >
-                                編輯課程
+                                編輯
+                              </button>
+                            </div>
+                          )}
+                          {currentUser.user.role === "instructor" && (
+                            <div>
+                              <button
+                                onClick={handleDeleteCourse}
+                                className="btn btn-primary"
+                                style={{ margin: "1px" }}
+                                id={course._id}
+                              >
+                                刪除
                               </button>
                             </div>
                           )}
