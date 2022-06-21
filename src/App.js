@@ -13,11 +13,17 @@ import EnrollCourseComponent from "./component/EnrollCourse-component";
 function App() {
   let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
   let [courseData, setCourseData] = useState(null);
+  let [searchResult, setSearchResult] = useState(null);
 
   console.log(currentUser);
   return (
     <div className="App">
-      <NavComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <NavComponent
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+        searchResult={searchResult}
+        setSearchResult={setSearchResult}
+      />
       <Routes>
         <Route path="/" element={<HomeComponent />} exact />
         <Route path="/register" element={<RegisterComponent />} exact />
@@ -70,6 +76,8 @@ function App() {
             <EnrollCourseComponent
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
+              searchResult={searchResult}
+              setSearchResult={setSearchResult}
             />
           }
           exact
