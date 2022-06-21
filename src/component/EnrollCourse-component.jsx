@@ -3,15 +3,29 @@ import { useNavigate } from "react-router-dom";
 import CourseService from "../services/course.service";
 
 const EnrollCourseComponent = (props) => {
-  let { currentUser, setCurrentUser, searchResult } = props;
+  let { currentUser, setCurrentUser } = props;
   const navigate = useNavigate();
+  let [searchInput, setSearchInput] = useState("");
+  let [searchResult, setSearchResult] = useState(null);
+  const handleTakeToLogin = () => {
+    navigate("/login");
+  };
+  const handleSearchInput = (e) => {
+    setSearchInput(e.target.value);
+  };
+  const handleSearch = () => {
+    CourseService.getCourseByName(searchInput)
+      .then((data) => {
+        setSearchResult(data.data);
+        console.log(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleEnroll = (e) => {
     console.log(e.target.id);
-    if (!currentUser) {
-      window.alert("You must login brfore to enroll your course.");
-      navigate("/login");
-    }
 
     CourseService.enroll(e.target.id, currentUser.user._id)
       .then(() => {

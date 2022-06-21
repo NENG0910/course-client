@@ -78,7 +78,7 @@ const ProfileComponent = (props) => {
           </div>
 
           <div>
-            {currentUser.user.role == "instructor" && (
+            {currentUser.user.role === "instructor" && (
               <div>
                 <h3 className="text-break">
                   <strong>{currentUser.user.username}，管理您的課程</strong>

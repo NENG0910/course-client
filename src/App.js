@@ -17,12 +17,7 @@ function App() {
   console.log(currentUser);
   return (
     <div className="App">
-      <NavComponent
-        currentUser={currentUser}
-        setCurrentUser={setCurrentUser}
-        searchResult={searchResult}
-        setSearchResult={setSearchResult}
-      />
+      <NavComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         <Route path="/" element={<HomeComponent />} exact />
         <Route path="/register" element={<RegisterComponent />} exact />
@@ -63,8 +58,6 @@ function App() {
             <EnrollCourseComponent
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
-              searchResult={searchResult}
-              setSearchResult={setSearchResult}
             />
           }
           exact

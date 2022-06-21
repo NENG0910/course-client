@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
-import CourseService from "../services/course.service";
 
 const NavComponent = (props) => {
-  let { currentUser, setCurrentUser, searchResult, setSearchResult } = props;
+  let { currentUser, setCurrentUser } = props;
   const navigate = useNavigate();
   const handleLogout = () => {
     AuthService.logout();
@@ -12,22 +11,7 @@ const NavComponent = (props) => {
     setCurrentUser(null);
     navigate("/");
   };
-  let [searchInput, setSearchInput] = useState("");
 
-  const handleSearchInput = (e) => {
-    setSearchInput(e.target.value);
-  };
-  const handleSearch = () => {
-    CourseService.getCourseByName(searchInput)
-      .then((data) => {
-        setSearchResult(data.data);
-        console.log(data.data);
-        navigate("/enroll");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light">
