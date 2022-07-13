@@ -75,6 +75,7 @@ const HomeComponent = () => {
               Github
             </a>
           </p>
+          <p>{Date.now()}</p>
         </footer>
       </div>
     </main>

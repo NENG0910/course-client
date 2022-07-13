@@ -25,7 +25,7 @@ const LoginComponent = (props) => {
         );
         setCurrentUser(AuthService.getCurrentUser());
 
-        navigate("/profile");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);

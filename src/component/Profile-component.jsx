@@ -112,55 +112,51 @@ const ProfileComponent = (props) => {
             {currentUser && courseData && courseData.length !== 0 && (
               <div>
                 {courseData.map((course) => (
-                  <div>
-                    <div
-                      key={course._id}
-                      className="card"
-                      style={{ width: "18rem" }}
-                    >
-                      <div className="card-body">
-                        <h5 className="card-title">{course.title}</h5>
-                        <p className="card-text">{course.description}</p>
-                        <p className="card-text">
-                          Student count: {course.students.length}
-                        </p>
-                        <div className="d-flex">
-                          <button
-                            onClick={handleEnterCourse}
-                            className="btn btn-primary"
-                            style={{ margin: "1px" }}
-                          >
-                            進入課程
-                          </button>
+                  <div
+                    key={course._id}
+                    className="card"
+                    style={{ width: "18rem", margin: "2rem" }}
+                  >
+                    <div className="card-body">
+                      <h5 className="card-title">{course.title}</h5>
+                      <p className="card-text">{course.description}</p>
+                      <p className="card-text">
+                        Student count: {course.students.length}
+                      </p>
+                      <div className="d-flex">
+                        <button
+                          onClick={handleEnterCourse}
+                          className="btn btn-primary"
+                          style={{ margin: "1px" }}
+                        >
+                          進入課程
+                        </button>
 
-                          {currentUser.user.role === "instructor" && (
-                            <div>
-                              <button
-                                onClick={handleEditCourse}
-                                className="btn btn-primary"
-                                style={{ margin: "1px" }}
-                              >
-                                編輯
-                              </button>
-                            </div>
-                          )}
-                          {currentUser.user.role === "instructor" && (
-                            <div>
-                              <button
-                                onClick={handleDeleteCourse}
-                                className="btn btn-primary"
-                                style={{ margin: "1px" }}
-                                id={course._id}
-                              >
-                                刪除
-                              </button>
-                            </div>
-                          )}
-                        </div>
+                        {currentUser.user.role === "instructor" && (
+                          <div>
+                            <button
+                              onClick={handleEditCourse}
+                              className="btn btn-primary"
+                              style={{ margin: "1px" }}
+                            >
+                              編輯
+                            </button>
+                          </div>
+                        )}
+                        {currentUser.user.role === "instructor" && (
+                          <div>
+                            <button
+                              onClick={handleDeleteCourse}
+                              className="btn btn-primary"
+                              style={{ margin: "1px" }}
+                              id={course._id}
+                            >
+                              刪除
+                            </button>
+                          </div>
+                        )}
                       </div>
                     </div>
-                    <br />
-                    <br />
                   </div>
                 ))}
               </div>
